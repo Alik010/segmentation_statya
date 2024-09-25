@@ -1,0 +1,70 @@
+__version__: 1.3.1
+transform:
+  __class_fullname__: Compose
+  additional_targets: {}
+  bbox_params: null
+  is_check_shapes: true
+  keypoint_params: null
+  p: 1.0
+  transforms:
+  - __class_fullname__: HorizontalFlip
+    always_apply: false
+    p: 0.6
+
+  - __class_fullname__: OneOf
+    transforms:
+    - __class_fullname__: RandomBrightnessContrast
+      always_apply: false
+      brightness_by_max: true
+      brightness_limit:
+      - -0.2
+      - 0.2
+      contrast_limit:
+      - -0.2
+      - 0.2
+      p: 1
+    - __class_fullname__: RandomGamma
+      gamma_limit:
+      - 50
+      - 180
+      p: 1
+    - __class_fullname__: RandomContrast
+      limit:
+      - -0.2
+      - 0.2
+      p: 1
+
+    p: 0.8
+
+  - __class_fullname__: OneOf
+    transforms:
+    - __class_fullname__: RandomSizedCrop
+      always_apply: false
+      min_max_height:
+      - 400
+      - 480
+      height: 480
+      width: 640
+      p: 1
+    - __class_fullname__: CenterCrop
+      always_apply: false
+      height: 480
+      width: 640
+      p: 1
+    - __class_fullname__: RandomCrop
+      always_apply: false
+      height: 480
+      width: 640
+      p: 1
+
+    p: 0.7
+
+  - __class_fullname__: GaussianBlur
+    always_apply: false
+    blur_limit:
+    - 3
+    - 7
+    sigma_limit:
+    - 0
+    - 0
+    p: 0.5

@@ -1,0 +1,48 @@
+_target_: src.models.module.Module
+
+num_classes: 7
+task: "multiclass"
+
+optimizer:
+  _target_: torch.optim.RAdam
+  _partial_: true
+  lr: 0.001
+  weight_decay: 0.0
+
+criterion1:
+  _target_: segmentation_models_pytorch.losses.DiceLoss
+  mode: "multiclass"
+  classes: 7
+
+weight_criterion1: 1.0
+
+criterion2:
+  _target_: src.loss_func.boundary.BoundaryDoULoss
+  n_classes: 7
+
+weight_criterion2: 0.0
+
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: max
+  factor: 0.1
+  patience: 10
+
+#net:
+#  _target_: src.models.components.Unet.unet
+#  ENCODER: 'efficientnet-b1'
+#  ENCODER_WEIGHTS: 'imagenet'
+#  NUM_CLASSES: 8
+#  ACTIVATION: 'softmax2d'
+
+net:
+  _target_: src.models.components.DeepLab.DeepLabNet
+  ENCODER: 'resnet50'
+  ENCODER_WEIGHTS: 'imagenet'
+  NUM_CLASSES: 7
+  ACTIVATION: 'softmax2d'
+
+# compile model for faster training with pytorch 2.0
+compile: false

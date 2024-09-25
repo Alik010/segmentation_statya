@@ -1,0 +1,31 @@
+# --------- pytorch --------- #
+torch>=2.0.0
+torchvision==0.17.0
+lightning>=2.0.0
+torchmetrics==1.3.0.post0
+segmentation-models-pytorch==0.3.3
+grad-cam
+
+# --------- hydra --------- #
+hydra-core==1.3.2
+hydra-colorlog==1.2.0
+hydra-optuna-sweeper==1.2.0
+
+# --------- loggers --------- #
+clearml==1.16.2
+tensorboard
+
+# --------- Other --------- #
+jupyter==1.0.0
+albumentations==1.3.1
+rich                                # beautiful text formatting in terminal
+rootutils                           # standardizing the project root setup
+flake8==7.0.0
+onnxruntime==1.16.3
+onnx==1.15.0
+Pillow==10.1.0
+numpy==1.26.2
+matplotlib
+pycocotools
+cocojson
+monai

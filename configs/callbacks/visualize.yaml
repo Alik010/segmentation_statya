@@ -1,0 +1,16 @@
+visualize_mask:
+  _target_: src.callbacks.VisualizeMask.VisualizePredMask
+  every_n_epochs: 1
+  color_mapping:
+    '0': [ 0, 0, 0 ]
+    '1': [ 0, 255, 0 ]
+    '2': [ 51, 221, 255 ]
+    '3': [ 22, 114, 204 ]
+    '4': [ 245, 147, 49 ]
+    '5': [ 255, 53, 94 ]
+    '6': [ 255, 192, 203 ]
+
+  size: (512, 512, 3)
+  grid_row: 4 # = batch_size
+  target_category_cam: 1
+  layer: trainer.model.net.model.decoder.blocks[4]

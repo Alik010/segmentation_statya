@@ -1,0 +1,5 @@
+clearml:
+  _target_: pytorch_lightning.loggers.clearml.ClearMLLogger
+  project_name: 'Street light classification'
+  task_name: 'Train'
+  tags: ['Mobilenetv2', "BinaryClassification"]
